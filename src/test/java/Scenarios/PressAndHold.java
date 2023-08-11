@@ -3,7 +3,6 @@ package Scenarios;
 import BasePage.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,13 +19,13 @@ public class PressAndHold extends BaseClass {
         OpenWebsite("https://www.walmart.com/blocked?url=L2lwL3Nlb3J0LzEwMDA3MjY3OQ==&uuid=a54956f0-dd07-11ed-82ea-1d892cfec3d0&vid=c17a2c6b-5ab8-11ed-bf79-74676779686d&g=b");
 
         PressAndHold();
-        //BrowserQuit();
+        BrowserQuit();
     }
 
     public static void PressAndHold() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         Actions action = new Actions(driver);
-        SmallWait(5000);
+        SmallWait(3000);
 
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(elementBtn));
         System.out.println(element.isDisplayed());
@@ -35,8 +34,8 @@ public class PressAndHold extends BaseClass {
         action.pause(8000).release(element).perform();
         action.release(element).perform();
 
-//        WebElement text = wait.until(ExpectedConditions.presenceOfElementLocated(signInText));
-//        System.out.println(text.isDisplayed());
-//        System.out.println(text.getText());
+        WebElement text = wait.until(ExpectedConditions.presenceOfElementLocated(signInText));
+        System.out.println(text.isDisplayed());
+        System.out.println(text.getText());
     }
 }
