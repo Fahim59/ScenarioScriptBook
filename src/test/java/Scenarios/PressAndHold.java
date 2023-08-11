@@ -28,7 +28,6 @@ public class PressAndHold extends BaseClass {
         SmallWait(3000);
 
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(elementBtn));
-        System.out.println(element.isDisplayed());
 
         action.clickAndHold(element).perform();
         action.pause(8000).release(element).perform();
