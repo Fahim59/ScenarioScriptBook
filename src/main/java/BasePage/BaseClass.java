@@ -1,6 +1,7 @@
 package BasePage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -28,4 +29,6 @@ public class BaseClass {
     }
 
     public static void SmallWait(int second) throws InterruptedException {Thread.sleep(second);}
+
+    public static void FindElementByXpath_Click(String xpath) { driver.findElement(By.xpath(xpath)).click(); }
 }
