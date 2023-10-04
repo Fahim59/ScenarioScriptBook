@@ -15,7 +15,7 @@ public class PressAndHold extends BaseClass {
     private static final By signInText = By.xpath("//h1[@class='mt3 f3 mb1']");
 
     public static void main(String[] args) throws InterruptedException {
-        ChromeLaunch();
+        FirefoxLaunch();
         OpenWebsite("https://www.walmart.com/blocked?url=L2lwL3Nlb3J0LzEwMDA3MjY3OQ==&uuid=a54956f0-dd07-11ed-82ea-1d892cfec3d0&vid=c17a2c6b-5ab8-11ed-bf79-74676779686d&g=b");
 
         PressAndHold();

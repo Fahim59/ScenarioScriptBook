@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Open PDF on Button Click</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #BDB76B; /* Set your desired background color */
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .headline {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #pdfButton {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        #pdfButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Read PDF Data</h1>
+    </header>
+    
+    <div class="container">
+        <h2 class="headline">Click the button below to open the PDF</h2>
+        <button id="pdfButton">Open PDF</button>
+    </div>
+    
+    <footer>
+        <p>&copy; Pdf data reading with Selenium</p>
+    </footer>
+
+    <script>
+        document.getElementById('pdfButton').addEventListener('click', function() {
+            var pdfLink = 'file:///E:/Intellij%20Files/ScenarioScriptBook/MemberLedger.pdf';
+            window.open(pdfLink, '_blank');
+        });
+    </script>
+</body>
+</html>

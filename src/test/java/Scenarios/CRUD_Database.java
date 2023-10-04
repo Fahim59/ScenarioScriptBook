@@ -22,10 +22,12 @@ public class CRUD_Database extends BaseClass {
     static Connection conn = db.connect_to_db();
 
     public static void main(String[] args) throws InterruptedException {
-        insertData();
-        getInsertedData();
+//        insertData();
+//        getInsertedData();
 
-        BrowserQuit();
+        deletData();
+
+        //BrowserQuit();
     }
 
     public static void insertData() throws InterruptedException {
@@ -58,5 +60,9 @@ public class CRUD_Database extends BaseClass {
         Assert.assertEquals(getPassword,fetchedData.get("password"));
 
         System.out.println("Data fetched successfully");
+    }
+
+    public static void deletData() {
+        db.delete_data(conn);
     }
 }

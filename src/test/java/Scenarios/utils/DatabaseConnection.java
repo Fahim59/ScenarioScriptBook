@@ -2,10 +2,7 @@ package Scenarios.utils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,7 +16,8 @@ public class DatabaseConnection {
     public Connection connect_to_db(){
         Connection conn = null;
         try{
-            BufferedReader BR = new BufferedReader(new FileReader("E:\\My Laptop\\Extra.txt"));
+            //BufferedReader BR = new BufferedReader(new FileReader("E:\\My Laptop\\Extra.txt"));
+            BufferedReader BR = new BufferedReader(new FileReader("E:\\My Laptop\\Real.txt"));
             String content = "";
 
             for (; (content = BR.readLine()) != null; ) {
@@ -31,7 +29,7 @@ public class DatabaseConnection {
             }
 
             Class.forName("org.postgresql.Driver");
-            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/"+db,user,pass);
+            conn = DriverManager.getConnection("jdbc:postgresql://10.11.200.96:5432/"+db,user,pass);
 
             if(conn!=null){
                 System.out.println("Connection Established");
@@ -102,5 +100,78 @@ public class DatabaseConnection {
             System.out.println(e.getMessage());
         }
         return userData;
+    }
+
+    public void delete_data(Connection conn) {
+        String samity = "916";
+
+        try {
+            String budget_info = "DELETE FROM coop.budget_info WHERE samity_id = CAST(? AS integer)";
+            String gl_transaction = "DELETE FROM coop.gl_transaction WHERE samity_id = CAST(? AS integer)";
+            String committee_member = "DELETE FROM coop.committee_member WHERE samity_id = CAST(? AS integer)";
+            String committee_info = "DELETE FROM coop.committee_info WHERE samity_id = CAST(? AS integer)";
+            String member_financial_info = "DELETE FROM coop.member_financial_info WHERE samity_id = CAST(? AS integer)";
+            String samity_authorized_person = "DELETE FROM coop.samity_authorized_person WHERE samity_id = CAST(? AS integer)";
+            String samity_info = "DELETE FROM coop.samity_info WHERE id = CAST(? AS integer)";
+
+            PreparedStatement preparedStatement = conn.prepareStatement(budget_info);
+            preparedStatement.setString(1, samity);
+
+            int deletedRows = preparedStatement.executeUpdate();
+            assert (deletedRows > 0);
+
+            preparedStatement.close();
+
+            PreparedStatement preparedStatement1 = conn.prepareStatement(gl_transaction);
+            preparedStatement1.setString(1, samity);
+
+            int deletedRows1 = preparedStatement1.executeUpdate();
+            assert (deletedRows1 > 0);
+
+            preparedStatement1.close();
+
+            PreparedStatement preparedStatement3 = conn.prepareStatement(committee_member);
+            preparedStatement3.setString(1, samity);
+
+            int deletedRows3 = preparedStatement3.executeUpdate();
+            assert (deletedRows3 > 0);
+
+            preparedStatement3.close();
+
+            PreparedStatement preparedStatement4 = conn.prepareStatement(committee_info);
+            preparedStatement4.setString(1, samity);
+
+            int deletedRows4 = preparedStatement4.executeUpdate();
+            assert (deletedRows4 > 0);
+
+            preparedStatement4.close();
+
+            PreparedStatement preparedStatement5 = conn.prepareStatement(member_financial_info);
+            preparedStatement5.setString(1, samity);
+
+            int deletedRows5 = preparedStatement5.executeUpdate();
+            assert (deletedRows5 > 0);
+
+            preparedStatement5.close();
+
+            PreparedStatement preparedStatement6 = conn.prepareStatement(samity_authorized_person);
+            preparedStatement6.setString(1, samity);
+
+            int deletedRows6 = preparedStatement6.executeUpdate();
+            assert (deletedRows6 > 0);
+
+            preparedStatement6.close();
+
+            PreparedStatement preparedStatement7 = conn.prepareStatement(samity_info);
+            preparedStatement7.setString(1, samity);
+
+            int deletedRows7 = preparedStatement7.executeUpdate();
+            assert (deletedRows7 > 0);
+
+            preparedStatement7.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
