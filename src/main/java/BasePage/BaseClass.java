@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BaseClass {
@@ -18,6 +19,12 @@ public class BaseClass {
     public static void ChromeLaunch() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
+    }
+
+    public static void ChromeLaunch(ChromeOptions options) {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
     }
 

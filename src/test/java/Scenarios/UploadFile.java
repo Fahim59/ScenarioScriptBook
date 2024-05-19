@@ -15,6 +15,7 @@ public class UploadFile extends BaseClass {
     public static void main(String[] args) throws InterruptedException {
         UploadPicture("","");
     }
+
     public static void UploadPicture(String fileName, String xpath) throws InterruptedException {
         Actions builder = new Actions(driver);
         builder.moveToElement(driver.findElement(By.xpath(xpath))).click().build().perform();
